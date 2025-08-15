@@ -1,0 +1,619 @@
+/* ================================
+   Global Variables
+=================================== */
+:root {
+    --primary: #3a6ea5;
+    --secondary: #6c757d;
+    --success: #4caf50;
+    --danger: #e74c3c;
+    --light-bg: #faf5f5;
+    --white: #ffffff;
+    --dark-text: #2c3e50;
+    --border-color: #d0d7e2;
+    --border-radius: 10px;
+    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 6px 20px rgba(0, 0, 0, 0.12);
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ================================
+   Base Layout
+=================================== */
+body {
+    font-family: var(--font-main);
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    text-align: right;
+}
+
+h1, h2, h3 {
+    color: var(--dark-text);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Pointer cursor for interactive controls */
+input, select, textarea { cursor: pointer; }
+
+/* ================================
+   Container
+=================================== */
+.container {
+    max-width: 80% !important;
+    width: 80% !important;
+    padding: 30px !important;
+    background-color: var(--white) !important;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+}
+.container + .container { margin-top: 20px !important; }
+
+#user-management {
+    margin-top: 50px;
+    border-top: #e1e1e1 2.5px solid;
+    padding-top: 20px;
+}
+
+/* ================================
+   Forms
+=================================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* Select (global) */
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-size: 1em;
+    font-family: var(--font-main);
+    box-sizing: border-box;
+    background-color: var(--white);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%233a6ea5" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-size: 16px;
+    padding-left: 35px;
+}
+
+/* Inputs (global) */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: var(--white);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus state */
+form input:focus,
+form select:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 8px rgba(58, 110, 165, 0.3);
+}
+
+/* Submit (global) */
+form input[type="submit"] {
+    padding: 14px;
+    border: none;
+    background-color: var(--success);
+    color: var(--white);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: var(--shadow-light);
+    transition: background-color 0.3s ease;
+}
+form input[type="submit"]:hover { background-color: #43a047; }
+
+/* Date input */
+form input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-size: 1em;
+    font-family: var(--font-main);
+    color: var(--dark-text);
+    background-color: var(--white);
+    box-sizing: border-box;
+    transition: border-color .3s ease, box-shadow .3s ease;
+    text-align: center;
+    color-scheme: light;
+}
+form input[type="date"]:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 8px rgba(58,110,165,.3);
+}
+form input[type="date"]::-webkit-datetime-edit-text,
+form input[type="date"]::-webkit-datetime-edit-year-field,
+form input[type="date"]::-webkit-datetime-edit-month-field,
+form input[type="date"]::-webkit-datetime-edit-day-field { color: var(--dark-text); }
+form input[type="date"]::-webkit-calendar-picker-indicator { opacity:.7; cursor:pointer; filter:grayscale(100%); }
+form input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity:1; }
+form input[type="date"]::-webkit-inner-spin-button,
+form input[type="date"]::-webkit-clear-button { display:none; }
+
+/* ================================
+   Tables – Global (inside .container)
+=================================== */
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1em;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin: 20px auto;
+    background-color: var(--white);
+}
+
+/* Header */
+.container table thead {
+    background-color: var(--primary);
+    color: var(--white);
+}
+.container table thead th {
+    padding: 14px;
+    text-align: center;
+}
+
+/* Body */
+.container table tbody td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.container table tr:nth-child(even) { background-color: var(--light-bg); }
+
+/* Inputs inside table cells (global) */
+.container table input,
+.container table select {
+    width: 95%;
+    padding: 12px;
+    font-size: 0.95em;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    text-align: center;
+    background-color: var(--white);
+}
+
+/* Buttons inside tables (global) */
+.container table input[type="submit"],
+.container table button {
+    background-color: var(--white);
+    color: var(--dark-text);
+    font: var(--font-main);
+    width: 100%;
+    padding: 10px 22px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+.container table input[type="submit"]:hover,
+.container table button:hover { background-color: var(--light-bg); }
+
+/* Last row – remove bottom border */
+.container table tbody tr:last-child th,
+.container table tbody tr:last-child td { border-bottom: none; }
+
+/* ================================
+   Alerts
+=================================== */
+.alert {
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 16px auto;
+    border: 1px solid var(--border-color);
+    background: var(--light-bg);
+}
+.alert-success {
+    border-color: #c8e6c9;
+    background: #e8f5e9;
+    color: #256029;
+}
+.alert-danger {
+    border-color: #f5c6cb;
+    background: #fdecea;
+    color: #ff000d;
+}
+
+/* ================================
+   Links
+=================================== */
+.register-link {
+    display: block;
+    margin-top: 15px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+.register-link:hover { color: #2a4f7a; }
+
+/* ================================
+   Buttons (global utilities)
+=================================== */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--dark-text);
+    font-family: var(--font-main);
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--shadow-light);
+    transition: background-color .2s, border-color .2s, color .2s;
+}
+.btn:hover { background: var(--light-bg); }
+.btn-primary { background: var(--primary); color: var(--white); border-color: var(--primary); }
+.btn-primary:hover { background: #335f8f; }
+.btn-light { background: var(--white); color: var(--dark-text); }
+.btn-sm { padding: 6px 10px; font-size: .9em; }
+.btn-xs { padding: 4px 8px; font-size: .85em; }
+
+/* legacy small action button used in some pages */
+.button_scrum {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+}
+
+/* ================================
+   Kanban Board (kept as-is)
+=================================== */
+#kanban-page {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+}
+.kanban-board {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+#kanban-container {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 1000px;
+}
+#kanban-container h3 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+#kanban-container form {
+    align-self: center;
+    margin-top: 20px;
+    display: grid;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.kanban-column {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    width: 200px;
+    min-height: 340px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+}
+.kanban-column__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.kanban-column h4 { margin: 0; text-align: center; }
+.kanban-task {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    margin: 8px 0;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    cursor: move;
+}
+.kanban-task .delete-task {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* ================================
+   Utilities (global)
+=================================== */
+.nowrap { white-space: nowrap; }
+.inline-controls { display: flex; gap: 8px; align-items: center; justify-content: center; }
+.select-sm { max-width: 180px; }
+
+/* Chips (inline lists) */
+.chips {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+}
+.chip {
+    display: inline-block;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    background: #f7f9fc;
+    color: var(--dark-text);
+    border-radius: 999px;
+    font-size: .95em;
+}
+
+/* Table wrappers */
+.table--responsive { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table--compact thead th, .table--compact tbody td { padding: 10px 8px; }
+.table--sticky thead th { position: sticky; top: 0; z-index: 2; background: var(--primary); color: var(--white); }
+
+
+
+/* ================================
+   Scrum Manage – Unified Compact Styling (New)
+   Scope: only .scrum-table
+=================================== */
+:root {
+    /* unified control scale for scrum table only (used below) */
+    --scrum-ctrl-h: 36px;
+    --scrum-ctrl-fs: .92em;
+}
+
+/* Table shell */
+.scrum-table {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+/* Header + rounded corners top */
+.scrum-table thead th {
+    padding: 12px 14px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    text-align: center;
+}
+.scrum-table thead th:first-child { border-top-right-radius: var(--border-radius); }
+.scrum-table thead th:last-child  { border-top-left-radius:  var(--border-radius); }
+
+/* Cells */
+.scrum-table thead th,
+.scrum-table tbody td {
+    padding: 10px 12px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Zebra + hover */
+.scrum-table tbody tr { background: #fff; }
+.scrum-table tbody tr:nth-child(even) { background: #f9fbff; }
+.scrum-table tbody tr:hover { background: #f2f6fc; }
+
+/* Controls: inputs/selects same height and font */
+.scrum-table input[type="text"],
+.scrum-table input[type="email"] {
+    height: var(--scrum-ctrl-h);
+    font-size: var(--scrum-ctrl-fs);
+    padding: 6px 10px;
+    width: auto !important;      /* override global 95% */
+    max-width: 280px;
+    text-align: center;
+}
+.scrum-table input[type="email"] { direction: ltr; text-align: left; }
+
+.scrum-table td select,
+.scrum-table .inline-controls select {
+    height: var(--scrum-ctrl-h);
+    font-size: var(--scrum-ctrl-fs);
+    padding: 6px 12px;
+    min-width: 240px;
+    max-width: 320px;
+    width: auto !important;      /* override global 95% */
+}
+
+/* Action buttons: small and neat (no full width) */
+.scrum-table .action-btn,
+.scrum-table .button_scrum,
+.scrum-table input[type="submit"] {
+    width: auto !important;
+    height: 28px;
+    padding: 3px 10px;
+    font-size: .85em;
+    border-radius: 6px;
+    box-shadow: none;
+}
+.scrum-table .action-btn--primary,
+.scrum-table .action-btn--confirm,
+.scrum-table .action-btn--danger {
+    height: 28px;
+    padding: 3px 10px;
+}
+
+/* Chips (assigned products) smaller */
+.scrum-table .chips { display: flex; 
+    flex-wrap: wrap; 
+    gap: 6px; 
+    justify-content: center; }
+.scrum-table .chip  { padding: 4px 8px; 
+    font-size: .88em; 
+    background: #eef3fb; 
+    border-color: #d9e4f4; }
+
+/* Placeholder color for assign/unassign selects */
+.scrum-table .assign-select option[value=""],
+.scrum-table .remove-select option[value=""] { 
+    color: #7a8aa0; }
+
+
+
+    /* Card container, subtle elevation */
+.card-like {
+  background: var(--white, #fff);
+  border: 1px solid var(--border-color, #d0d7e2);
+  border-radius: 12px;
+  box-shadow: var(--shadow-light, 0 4px 8px rgba(0,0,0,.08));
+  overflow: hidden;
+  margin: 12px 0 24px;
+}
+
+/* Base table look, consistent with products page */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table thead th {
+  background: var(--primary, #3a6ea5);
+  color: var(--white, #fff);
+  font-weight: 700;
+  text-align: center;
+  padding: 12px 10px;
+}
+.table tbody td {
+  background: var(--white, #fff);
+  color: var(--dark-text, #2c3e50);
+  text-align: center;
+  padding: 12px 10px;
+  border-top: 1px solid var(--border-color, #d0d7e2);
+}
+.table--compact thead th,
+.table--compact tbody td { padding: 10px 12px; }
+
+/* Rounded corners for thead like in your screenshot */
+.table thead th:first-child { border-top-right-radius: 12px; }
+.table thead th:last-child  { border-top-left-radius: 12px; }
+
+/* Zebra rows, subtle */
+.table tbody tr:nth-child(odd) td {
+  background: #f9fbfd;
+}
+
+/* Optional elevated border on hover */
+.table--elevated tbody tr:hover td {
+  background: #f4f8ff;
+}
+
+/* RTL helper */
+.table.rtl { direction: rtl; }
+
+/* Quote cell styling, keeps quotes tight with label */
+.table td.quoted { font-weight: 600; }
+
+/* Alerts, same look as products page */
+.alert { padding: 14px 16px; border-radius: 10px; margin: 10px 0; text-align: center; }
+.alert-success { background: #eaf8ef; border: 1px solid #b7e3c3; color: #295f3a; }
+.alert-danger  { background: #ffefef; border: 1px solid #f3c2c2; color: #7a2020; }
+
+/* ================================
+   Responsive
+=================================== */
+@media (max-width: 1000px) {
+    /* hide less-critical columns when flagged with .hide-sm */
+    .table--responsive thead th.hide-sm,
+    .table--responsive tbody td.hide-sm { display: none; }
+
+    .inline-controls { flex-wrap: wrap; }
+    .select-sm { max-width: 100%; width: 100%; }
+    .scrum-table td select { min-width: 200px; }
+}
+@media (max-width: 900px) {
+    .container { width: 98%; padding: 20px; }
+    .container table { font-size: 0.9em; }
+    form { max-width: 100%; }
+    .kanban-board { flex-wrap: wrap; justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+    .table--compact thead th, .table--compact tbody td { padding: 8px 6px; }
+    .scrum-table .inline-controls { flex-direction: column; align-items: stretch; }
+    .scrum-table td select,
+    .scrum-table input[type="text"],
+    .scrum-table input[type="email"] { width: 100% !important; max-width: none; }
+    .scrum-table .action-btn,
+    .scrum-table .button_scrum,
+    .scrum-table input[type="submit"] { width: 100% !important; }
+}
+/* ================================
+   Modal (Global)
+=================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-card {
+    background-color: var(--white);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-medium);
+    text-align: right;
+    direction: rtl;
+}
+
+#taskModal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-card {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  direction: rtl;
+  text-align: right;
+}

@@ -1,0 +1,128 @@
+/* ================================
+   Navbar Styles
+   Fixed top navigation bar and related elements
+=================================== */
+
+/* Navbar container */
+.navbar {
+    background-color: #2c3e50;
+    overflow: hidden;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-medium);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* Navbar links */
+.navbar a {
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-right: 15px;
+    font-size: 1em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.navbar a:hover {
+    background-color: #3b5a77;
+    color: white;
+}
+
+/* Navbar sections */
+.navbar .left-section {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.navbar .right-section {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-left: 15px;
+}
+
+/* Main content container below navbar */
+.container {
+    max-width: 400px;
+    margin: 90px auto 30px auto; /* Adjusted for fixed navbar */
+    padding: 30px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+
+
+/* Headings in navbar context */
+h2, h3 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Button lists for dashboards */
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+ul li {
+    text-align: center;
+}
+
+ul li a {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 80%;
+    max-width: 300px;
+}
+
+ul li a:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+}
+
+ul li a:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Logout button */
+.logout-btn-main {
+    background-color: var(--danger) !important;
+    max-width: 200px !important;
+}
+.logout-btn-main:hover {
+    background-color: #c82333 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+.logout-btn-main:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
